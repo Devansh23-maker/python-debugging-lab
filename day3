@@ -1,0 +1,122 @@
+# 🐞 Python Debugging Lab
+# Day 03 – Conditional Logic Debugging
+# Devansh Sharma
+
+"""
+Focus Areas:
+- AND vs OR mistakes
+- Wrong comparison operators
+- Nested if bugs
+- Boolean logic errors
+- NoneType checking
+"""
+
+print("=== Day 03: Conditional Debugging ===\n")
+
+
+# --------------------------------------------------
+# 1️⃣ AND vs OR Mistake
+# --------------------------------------------------
+
+age = 20
+has_id = False
+
+# Incorrect Logic
+if age >= 18 or has_id:
+    print("Allowed entry (Incorrect Logic)")
+
+# Correct Logic
+if age >= 18 and has_id:
+    print("Allowed entry (Correct Logic)")
+else:
+    print("Entry Denied (Correct Logic)")
+
+print()
+
+
+# --------------------------------------------------
+# 2️⃣ Wrong Comparison Operator
+# --------------------------------------------------
+
+num = 10
+
+# Logical Bug
+if num > 10:
+    print("Number is greater than 10")
+
+# Correct
+if num >= 10:
+    print("Number is greater than or equal to 10")
+
+print()
+
+
+# --------------------------------------------------
+# 3️⃣ Nested If Error
+# --------------------------------------------------
+
+marks = 85
+
+if marks > 50:
+    if marks > 90:
+        grade = "A"
+    else:
+        grade = "B"
+else:
+    grade = "Fail"
+
+print("Grade:", grade)
+
+print()
+
+
+# --------------------------------------------------
+# 4️⃣ NoneType Checking Bug
+# --------------------------------------------------
+
+value = None
+
+# Dangerous way
+# if value == None:
+
+# Correct way
+if value is None:
+    print("Value is None")
+
+print()
+
+
+# --------------------------------------------------
+# 5️⃣ Boolean Short-Circuit Example
+# --------------------------------------------------
+
+x = 0
+
+# This avoids ZeroDivisionError because of short-circuit
+if x != 0 and (10 / x) > 1:
+    print("Valid Division")
+else:
+    print("Safe from division error due to short-circuit")
+
+print()
+
+
+# --------------------------------------------------
+# 6️⃣ Common Logical Mistake Example
+# --------------------------------------------------
+
+number = 15
+
+# Incorrect logic
+if number % 2 == 0:
+    print("Even")
+if number % 2 != 0:
+    print("Odd")
+
+# Better practice
+if number % 2 == 0:
+    print("Even (Correct Logic)")
+else:
+    print("Odd (Correct Logic)")
+
+print("\n=== Day 03 Completed ===")
