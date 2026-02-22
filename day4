@@ -1,0 +1,115 @@
+Day 04 – Debugging Functions in Python
+Python Debugging Lab (14-Day Series)
+🚀 Overview
+
+Today’s focus was on understanding and debugging function-related mistakes in Python.
+
+Functions are powerful, but small misunderstandings around return values, scope, and default arguments can cause serious hidden bugs.
+
+This day strengthened my understanding of:
+
+How functions return values
+
+Difference between print() and return
+
+Scope issues (local vs global variables)
+
+UnboundLocalError
+
+Mutable default argument trap
+
+🔍 1. print() vs return
+
+Many beginners confuse printing a value with returning a value.
+
+Example:
+
+def add(a, b):
+    print(a + b)
+
+result = add(2, 3)
+print(result)
+
+Output:
+
+5
+None
+
+Explanation:
+
+print() only displays the value.
+
+The function does not return anything.
+
+Python automatically returns None if no return statement is written.
+
+Rule to remember:
+
+If there is no return statement → the function returns None.
+
+🔍 2. Scope & UnboundLocalError
+
+Example:
+
+x = 5
+
+def test():
+    x = x + 1
+
+This causes:
+
+UnboundLocalError: local variable 'x' referenced before assignment
+
+Why?
+
+If you assign to a variable inside a function, Python treats it as local.
+
+So in x = x + 1, Python assumes x is local, but it hasn’t been defined yet inside the function.
+
+Key Rule:
+
+Assignment inside a function makes the variable local automatically.
+
+🔍 3. Mutable Default Argument Trap
+
+Example:
+
+def func(a=[]):
+    a.append(1)
+    return a
+
+print(func())
+print(func())
+
+Output:
+
+[1]
+[1, 1]
+
+Why?
+
+Default arguments are created once at function definition time — not every time the function runs.
+
+So the same list is reused across calls.
+
+Correct Pattern:
+
+def func(a=None):
+    if a is None:
+        a = []
+    a.append(1)
+    return a
+
+This ensures a new list is created each time.
+
+🎯 Key Takeaways
+
+Every function returns something.
+
+If no return is written → Python returns None.
+
+Assigning inside a function makes the variable local.
+
+Mutable default arguments can create hidden shared state bugs.
+
+Understanding function behavior is critical for writing predictable and production-ready code.
