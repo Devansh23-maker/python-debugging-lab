@@ -1,0 +1,70 @@
+🚀 Day 05 – Debugging Lists & Dictionaries in Python
+Python Debugging Lab (14-Day Series)
+
+Today I focused on debugging one of the most common real-world problem areas:
+
+👉 Lists and Dictionaries
+
+Many hidden bugs in data pipelines and backend systems happen due to incorrect list manipulation or unsafe dictionary access.
+
+🔍 Topics Covered
+
+Modifying a list while iterating
+
+Index shifting issues
+
+Safe list filtering
+
+Dictionary KeyError
+
+Safe dictionary access using .get()
+
+Shallow copy behavior
+
+💡 Key Learning #1 – Modifying List While Looping
+nums = [1,2,3,4]
+
+for n in nums:
+    if n % 2 == 0:
+        nums.remove(n)
+
+print(nums)
+
+This may produce unexpected behavior because removing elements shifts the list while iterating.
+
+Safer approach:
+
+nums = [n for n in nums if n % 2 != 0]
+
+Never modify a list while iterating over it directly.
+
+💡 Key Learning #2 – Dictionary KeyError
+d = {"x": 10}
+print(d["y"])
+
+This crashes with:
+
+KeyError
+
+Safer approach:
+
+print(d.get("y", 0))
+
+.get() prevents crashes and allows default values.
+
+💡 Key Learning #3 – Shallow Copy Trap
+a = [[1,2],[3,4]]
+b = a.copy()
+
+b[0][0] = 99
+print(a)
+
+Output:
+
+[[99, 2], [3, 4]]
+
+Even after copying, inner lists remain shared.
+
+This is called shallow copy behavior.
+
+Understanding this is critical when working with nested data structures.
