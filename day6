@@ -1,0 +1,101 @@
+🚀 Day 06 – Debugging Strings & Data Cleaning Issues in Python
+Python Debugging Lab (14-Day Series)
+
+Today I focused on one of the most underrated debugging areas:
+
+👉 String handling & data cleaning bugs
+
+In real-world data analytics, most errors don’t come from algorithms — they come from messy strings.
+
+🔍 Topics Covered
+
+Case sensitivity issues
+
+Hidden whitespace bugs
+
+Incorrect string comparisons
+
+.strip(), .lower() usage
+
+Index errors in strings
+
+Safe string parsing
+
+💡 Key Learning #1 – Case Sensitivity Bug
+name = "Devansh"
+
+if name == "devansh":
+    print("Match")
+
+This condition fails.
+
+Why?
+
+Python string comparison is case-sensitive.
+
+Safer approach:
+
+if name.lower() == "devansh":
+    print("Match")
+💡 Key Learning #2 – Hidden Whitespace Bug
+email = "user@gmail.com "
+
+if email == "user@gmail.com":
+    print("Valid")
+
+This fails because of trailing space.
+
+Correct approach:
+
+email = email.strip()
+
+Always clean strings before comparison.
+
+💡 Key Learning #3 – IndexError in Strings
+s = "Python"
+print(s[6])
+
+This crashes:
+
+IndexError: string index out of range
+
+Valid indexes:
+
+0 → P
+1 → y
+2 → t
+3 → h
+4 → o
+5 → n
+
+Last index is len(s) - 1.
+
+💡 Key Learning #4 – Splitting Data Safely
+data = "100,200,300"
+values = data.split(",")
+
+print(values)
+
+Output:
+['100', '200', '300']
+
+Always remember:
+
+After splitting → values are strings, not integers.
+
+Convert safely:
+
+values = [int(v) for v in values]
+🎯 Why This Matters
+
+String bugs can:
+
+Break dataset filtering
+
+Cause incorrect joins
+
+Produce wrong aggregations
+
+Fail production APIs
+
+In Data Analytics & Data Engineering, string cleaning is debugging.
