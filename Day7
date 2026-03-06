@@ -1,0 +1,64 @@
+🚀 Day 07 – Debugging Exceptions & Error Handling in Python
+Python Debugging Lab (14-Day Series)
+Today I focused on understanding how Python handles runtime errors and how to debug programs using proper exception handling.
+Errors are inevitable in real-world systems, but good engineers design code that can detect, handle, and recover from them safely.
+🔍 Topics Covered
+What exceptions are in Python
+try / except blocks
+Handling specific errors
+Avoiding silent failures
+Raising custom errors
+💡 Key Learning #1 – Basic Exception Handling
+Example:
+Python
+Copy code
+a = 10
+b = 0
+
+try:
+    print(a / b)
+except ZeroDivisionError:
+    print("Cannot divide by zero")
+Instead of crashing, the program safely handles the error.
+💡 Key Learning #2 – Catching Specific Errors
+Bad practice:
+Python
+Copy code
+try:
+    x = int("abc")
+except:
+    print("Error occurred")
+Better approach:
+Python
+Copy code
+try:
+    x = int("abc")
+except ValueError:
+    print("Invalid number format")
+Catching specific exceptions makes debugging easier.
+💡 Key Learning #3 – Avoid Silent Failures
+Bad practice:
+Python
+Copy code
+try:
+    process_data()
+except:
+    pass
+This hides real errors and makes debugging very difficult.
+Better practice:
+Python
+Copy code
+try:
+    process_data()
+except Exception as e:
+    print("Error:", e)
+💡 Key Learning #4 – Raising Custom Errors
+Sometimes we intentionally raise errors when conditions are invalid.
+Example:
+Python
+Copy code
+def withdraw(balance, amount):
+    if amount > balance:
+        raise ValueError("Insufficient balance")
+    return balance - amount
+This helps prevent incorrect program states
