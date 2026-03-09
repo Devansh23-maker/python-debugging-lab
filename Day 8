@@ -1,0 +1,129 @@
+🚀 Day 08 – Debugging Pandas Column & DataFrame Issues
+
+Python Debugging Lab (14-Day Series)
+
+Today I focused on debugging one of the most common problems in data analysis:
+
+👉 Pandas DataFrame column errors.
+
+When working with datasets, many bugs happen due to incorrect column names, hidden spaces, wrong indexing, or incorrect data types.
+
+Understanding how to inspect and debug DataFrames is essential for data professionals.
+
+
+---
+
+🔍 Topics Covered
+
+KeyError in Pandas
+
+Case sensitivity in column names
+
+Hidden whitespace issues
+
+Checking columns with df.columns
+
+Safe column access
+
+Understanding DataFrame structure
+
+
+
+---
+
+💡 Key Learning #1 – Pandas KeyError
+
+Example:
+
+import pandas as pd
+
+df = pd.DataFrame({"age":[20,25,30]})
+print(df["Age"])
+
+This crashes with:
+
+KeyError: 'Age'
+
+Why?
+
+Column names in Pandas are case-sensitive.
+
+Correct version:
+
+print(df["age"])
+
+
+---
+
+💡 Key Learning #2 – Hidden Spaces in Column Names
+
+Sometimes datasets contain hidden spaces.
+
+Example:
+
+df.columns
+
+Output might be:
+
+Index(['Age ', 'Salary'], dtype='object')
+
+Notice the space after "Age ".
+
+Safe solution:
+
+df.columns = df.columns.str.strip()
+
+This removes unwanted spaces.
+
+
+---
+
+💡 Key Learning #3 – Always Inspect Data
+
+Before working with a dataset, always check:
+
+print(df.head())
+print(df.columns)
+print(df.info())
+
+These commands help understand the dataset structure.
+
+
+---
+
+💡 Key Learning #4 – Safe Column Checking
+
+Before accessing a column:
+
+if "age" in df.columns:
+    print(df["age"])
+
+This prevents runtime errors.
+
+
+---
+
+🎯 Why This Matters
+
+DataFrame debugging is essential because:
+
+Real datasets often contain messy column names
+
+Case sensitivity causes many errors
+
+Hidden spaces break filtering and aggregation
+
+Data inspection prevents silent bugs
+
+
+Strong debugging habits make data analysis much more reliable.
+
+
+---
+
+📂 Repository: python-debugging-lab
+📅 Day 08 of 14 – Structured Debugging Challenge
+
+Building strong fundamentals toward becoming a Full-Stack Cloud AI & Data Engineer.
+
+#Python #Debugging #Pandas #DataAnalytics #LearningInPublic #DataEngineering
