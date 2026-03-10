@@ -1,0 +1,121 @@
+# 🚀 Day 09 – Debugging Missing Values & Data Cleaning in Pandas
+
+### Python Debugging Lab (14-Day Series)
+
+Today I focused on one of the most common real-world data problems:
+
+👉 Missing values in datasets.
+
+In real data analysis projects, datasets are rarely clean. Missing values can break calculations, models, and data pipelines if not handled properly.
+
+Learning how to detect and debug missing data is an essential skill for any data professional.
+
+---
+
+## 🔍 Topics Covered
+
+* Detecting missing values
+* Understanding `NaN` in Pandas
+* Using `isnull()` / `isna()`
+* Handling missing values with `fillna()`
+* Removing missing values with `dropna()`
+* Understanding how aggregations treat missing data
+
+---
+
+## 💡 Key Learning #1 – Identifying Missing Values
+
+Example:
+
+```python
+import pandas as pd
+
+df = pd.DataFrame({
+    "salary":[10000, 20000, None, 30000]
+})
+
+print(df.isnull())
+```
+
+Output:
+
+```
+False
+False
+True
+False
+```
+
+This shows where missing values exist.
+
+---
+
+## 💡 Key Learning #2 – Counting Missing Values
+
+```python
+print(df.isnull().sum())
+```
+
+This helps quickly identify how many missing values each column contains.
+
+---
+
+## 💡 Key Learning #3 – Filling Missing Values
+
+Instead of removing data, we can fill missing values.
+
+Example:
+
+```python
+df["salary"] = df["salary"].fillna(df["salary"].mean())
+```
+
+This replaces missing values with the average salary.
+
+---
+
+## 💡 Key Learning #4 – Dropping Missing Values
+
+Sometimes removing rows is better.
+
+```python
+df = df.dropna()
+```
+
+This removes rows that contain missing values.
+
+---
+
+## 💡 Key Learning #5 – Aggregations Ignore NaN
+
+Example:
+
+```python
+print(df["salary"].mean())
+```
+
+Pandas ignores `NaN` values by default during calculations.
+
+This behavior is important to understand while analyzing datasets.
+
+---
+
+## 🎯 Why This Matters
+
+Handling missing values correctly helps:
+
+* Prevent incorrect calculations
+* Improve machine learning model performance
+* Ensure reliable data analysis
+* Clean messy real-world datasets
+
+Data cleaning is a critical part of every data analytics workflow.
+
+---
+
+📂 Repository: python-debugging-lab
+📅 Day 09 of 14 – Structured Debugging Challenge
+
+Strengthening fundamentals toward becoming a Full-Stack Cloud AI & Data Engineer.
+
+#Python #Debugging #Pandas #DataCleaning #DataAnalytics #LearningInPublic
