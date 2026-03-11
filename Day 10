@@ -1,0 +1,94 @@
+🚀 Day 10 – Debugging Data Filtering & Boolean Indexing in Pandas
+Python Debugging Lab (14-Day Series)
+
+Today I practiced debugging one of the most important skills in data analysis:
+
+👉 Filtering datasets using Boolean indexing in Pandas.
+
+Filtering looks simple, but small mistakes in conditions, operators, or parentheses can cause incorrect results or runtime errors.
+
+Learning to debug filters is essential when working with real datasets.
+
+🔍 Topics Covered
+
+Boolean indexing in Pandas
+
+Combining multiple conditions
+
+Using & instead of and
+
+Importance of parentheses in filtering
+
+Creating separate boolean masks for debugging
+
+💡 Key Learning #1 – Boolean Filtering
+
+Example:
+
+import pandas as pd
+
+df = pd.DataFrame({
+    "price":[200,350,500],
+    "rating":[4.2,4.7,4.8]
+})
+
+filtered = df[df["rating"] >= 4.5]
+print(filtered)
+
+This selects only rows where rating is at least 4.5.
+
+💡 Key Learning #2 – Combining Multiple Conditions
+
+Example:
+
+filtered = df[(df["rating"] >= 4.5) & (df["price"] >= 300)]
+
+Important rule:
+
+Use & for combining conditions in Pandas.
+
+Using and will cause an error.
+
+💡 Key Learning #3 – Boolean Masks for Debugging
+
+Instead of writing one long filter, creating masks helps debugging.
+
+Example:
+
+rating_mask = df["rating"] >= 4.5
+price_mask = df["price"] >= 300
+
+filtered = df[rating_mask & price_mask]
+
+This approach makes debugging easier because each condition can be tested separately.
+
+💡 Key Learning #4 – Parentheses Are Important
+
+Without parentheses, filtering can break.
+
+Correct:
+
+(df["rating"] >= 4.5) & (df["price"] >= 300)
+
+This ensures Python evaluates each condition properly.
+
+🎯 Why This Matters
+
+Boolean filtering is used everywhere in data work:
+
+Cleaning datasets
+
+Selecting relevant records
+
+Preparing data for machine learning
+
+Feature engineering
+
+Mastering filtering logic helps avoid subtle bugs in data pipelines.
+
+📂 Repository: python-debugging-lab
+📅 Day 10 of 14 – Structured Debugging Challenge
+
+Strengthening debugging skills on the path to becoming a Full-Stack Cloud AI & Data Engineer.
+
+#Python #Debugging #Pandas #DataAnalytics #LearningInPublic #DataEngineering
