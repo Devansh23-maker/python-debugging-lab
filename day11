@@ -1,0 +1,115 @@
+# 🚀 Day 11 – Debugging DataFrame Merging & Join Issues in Pandas
+
+### Python Debugging Lab (14-Day Series)
+
+Today I focused on debugging one of the most common problems in real-world data analysis:
+
+👉 DataFrame merging and join issues.
+
+When combining datasets, small mistakes in join keys or merge types can produce incorrect results, duplicate rows, or missing data.
+
+Understanding how to debug merges is critical when working with multiple datasets.
+
+---
+
+## 🔍 Topics Covered
+
+* Understanding `merge()` in Pandas
+* Inner vs Left vs Right joins
+* Duplicate rows after merging
+* Missing values after joins
+* Verifying join keys before merging
+
+---
+
+## 💡 Key Learning #1 – Basic DataFrame Merge
+
+Example:
+
+```python id="qtdlq9"
+import pandas as pd
+
+df1 = pd.DataFrame({
+    "id":[1,2,3],
+    "name":["A","B","C"]
+})
+
+df2 = pd.DataFrame({
+    "id":[1,2,3],
+    "salary":[50000,60000,70000]
+})
+
+merged = pd.merge(df1, df2, on="id")
+print(merged)
+```
+
+This combines both datasets based on the `id` column.
+
+---
+
+## 💡 Key Learning #2 – Join Type Matters
+
+Example:
+
+```python id="jfxmkg"
+pd.merge(df1, df2, on="id", how="left")
+```
+
+Common join types:
+
+* `inner` → only matching rows
+* `left` → all rows from left table
+* `right` → all rows from right table
+* `outer` → all rows from both tables
+
+Choosing the wrong join type can produce incorrect results.
+
+---
+
+## 💡 Key Learning #3 – Duplicate Row Bugs
+
+If join keys contain duplicates:
+
+```python id="oy4tkg"
+df1 = pd.DataFrame({"id":[1,1,2]})
+df2 = pd.DataFrame({"id":[1,2]})
+```
+
+Merging can create unexpected duplicate rows.
+
+Always check keys before merging.
+
+---
+
+## 💡 Key Learning #4 – Debugging Join Keys
+
+Before merging datasets:
+
+```python id="o3hsr2"
+print(df1["id"].nunique())
+print(df2["id"].nunique())
+```
+
+This helps detect duplicate keys.
+
+---
+
+## 🎯 Why This Matters
+
+Merging datasets incorrectly can:
+
+* Produce duplicate rows
+* Lose important records
+* Corrupt analysis results
+* Break data pipelines
+
+Debugging joins is one of the most important skills in real-world data analysis.
+
+---
+
+📂 Repository: python-debugging-lab
+📅 Day 11 of 14 – Structured Debugging Challenge
+
+Building strong debugging skills toward becoming a Full-Stack Cloud AI & Data Engineer.
+
+#Python #Debugging #Pandas #DataEngineering #DataAnalytics #LearningInPublic
