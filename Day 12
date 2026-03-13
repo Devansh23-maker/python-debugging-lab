@@ -1,0 +1,111 @@
+# 🚀 Day 13 – Debugging Performance Issues & Inefficient Code in Python
+
+### Python Debugging Lab (14-Day Series)
+
+Today I focused on debugging another important aspect of programming:
+
+👉 Performance issues in Python code.
+
+Sometimes code works correctly but runs very slowly. Debugging performance problems is important when working with large datasets, data pipelines, or production systems.
+
+Learning to identify inefficient code patterns helps build faster and more scalable programs.
+
+---
+
+## 🔍 Topics Covered
+
+* Identifying slow loops
+* Avoiding unnecessary computations
+* Vectorization in Pandas
+* Efficient data processing
+* Basic performance debugging mindset
+
+---
+
+## 💡 Key Learning #1 – Avoid Slow Python Loops
+
+Example:
+
+```python
+result = []
+for i in range(len(data)):
+    result.append(data[i] * 2)
+```
+
+While this works, loops can become slow for large datasets.
+
+Better approach:
+
+```python
+result = [x * 2 for x in data]
+```
+
+List comprehensions are usually faster and cleaner.
+
+---
+
+## 💡 Key Learning #2 – Use Vectorized Operations in Pandas
+
+Example:
+
+```python
+df["double_price"] = df["price"] * 2
+```
+
+This is much faster than looping through rows.
+
+Avoid this:
+
+```python
+for i in range(len(df)):
+    df.loc[i, "double_price"] = df.loc[i, "price"] * 2
+```
+
+Vectorized operations are optimized for performance.
+
+---
+
+## 💡 Key Learning #3 – Avoid Repeated Calculations
+
+Example:
+
+```python
+for item in data:
+    value = expensive_function(item)
+```
+
+If the function result is reused, store it once instead of recalculating.
+
+---
+
+## 💡 Key Learning #4 – Profiling Mindset
+
+Before optimizing, ask:
+
+* Which part of the code is slow?
+* Is there a built-in Python or Pandas method that is faster?
+* Can loops be replaced with vectorized operations?
+
+Efficient code is not just about correctness — it’s also about scalability.
+
+---
+
+## 🎯 Why This Matters
+
+Performance debugging helps:
+
+* Process large datasets efficiently
+* Build scalable data pipelines
+* Reduce runtime in machine learning workflows
+* Improve production system performance
+
+Understanding performance patterns makes you a stronger Python developer.
+
+---
+
+📂 Repository: python-debugging-lab
+📅 Day 13 of 14 – Structured Debugging Challenge
+
+Continuing to strengthen debugging skills on the path to becoming a Full-Stack Cloud AI & Data Engineer.
+
+#Python #Debugging #Performance #DataEngineering #LearningInPublic #PythonProgramming
