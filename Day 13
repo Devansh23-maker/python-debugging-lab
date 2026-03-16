@@ -1,0 +1,88 @@
+# 🚀 Day 13 – Debugging Performance Issues & Inefficient Code in Python
+### Python Debugging Lab (14-Day Series)
+
+Today I focused on debugging performance issues in Python code. Sometimes code runs correctly but becomes very slow when working with large datasets. Learning to identify inefficient patterns and optimize them is an important skill for data professionals and engineers.
+
+---
+
+## 🔍 Topics Covered
+
+- Identifying slow loops  
+- Avoiding unnecessary computations  
+- Using list comprehensions for efficiency  
+- Vectorized operations in Pandas  
+- Basic performance debugging mindset  
+
+---
+
+## 💡 Key Learning #1 – Avoid Slow Python Loops
+
+Example:
+
+```python
+result = []
+for i in range(len(data)):
+    result.append(data[i] * 2)
+
+While this works, it can be inefficient for large datasets.
+
+Better approach:
+
+result = [x * 2 for x in data]
+
+List comprehensions are faster and cleaner.
+
+💡 Key Learning #2 – Use Vectorized Operations in Pandas
+
+Instead of looping through DataFrame rows:
+
+for i in range(len(df)):
+    df.loc[i, "double_price"] = df.loc[i, "price"] * 2
+
+Use vectorized operations:
+
+df["double_price"] = df["price"] * 2
+
+Vectorized operations are optimized and much faster.
+
+💡 Key Learning #3 – Avoid Repeated Calculations
+
+Example:
+
+for item in data:
+    value = expensive_function(item)
+
+If the same computation is repeated many times, it can slow down the program. Store results or restructure the logic to avoid unnecessary work.
+
+💡 Key Learning #4 – Performance Debugging Mindset
+
+Before optimizing, ask:
+
+Which part of the code is slow?
+
+Can loops be replaced with built-in functions?
+
+Can vectorized operations be used instead?
+
+Correct code is good — efficient code is better.
+
+🎯 Why This Matters
+
+Performance debugging helps:
+
+Process large datasets efficiently
+
+Build scalable data pipelines
+
+Reduce runtime in machine learning workflows
+
+Improve production system reliability
+
+Optimizing code is an important part of becoming a strong software engineer.
+
+📂 Repository: python-debugging-lab
+📅 Day 13 of 14 – Structured Debugging Challenge
+
+Continuing to strengthen debugging fundamentals toward becoming a Full-Stack Cloud AI & Data Engineer.
+
+#Python #Debugging #PerformanceOptimization #DataEngineering #LearningInPublic
