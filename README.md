@@ -1,6 +1,6 @@
 # 🐞 Python Debugging Lab
 
-A structured repository dedicated to improving Python debugging skills for Data Analytics and Software Development.
+A structured repository dedicated to improving Python debugging skills  for Data Analytics and Software Development.
 
 ---
 
